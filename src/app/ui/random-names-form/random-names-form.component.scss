@@ -1,0 +1,24 @@
+.input-card {
+    width: 92%;
+    margin: 1rem;
+}
+
+.result-card {
+    width: 92%;
+    margin: 1rem;
+}
+
+.result-data {
+    margin: 10px 15px;
+    padding-top: 1rem;
+    [matLine] {
+        color: #888888;
+        font-weight: 400;
+        font-size: 1.2rem;
+    }
+}
+
+.form-inputs {
+    max-width: 80%;
+    margin: 10px 15px;
+}
