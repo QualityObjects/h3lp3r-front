@@ -19,6 +19,7 @@ import { HashService } from './services/hash-service';
 import { BaseEncodingService } from './services/base-encoding-service';
 import { HashFormComponent } from './ui/hash-form/hash-form.component';
 import { RandomService } from './services/random-service';
+import { BaseEncodingFormComponent } from './ui/base-encoding-form/base-encoding-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RandomService } from './services/random-service';
     LeftMenuComponent,
     HomeComponent,
     DashboardComponent,
-    HashFormComponent
+    HashFormComponent,
+    BaseEncodingFormComponent
   ],
   imports: [
     BrowserModule,
