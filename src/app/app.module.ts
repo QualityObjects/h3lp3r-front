@@ -15,6 +15,10 @@ import { MessageService } from './services/msgs';
 import { HomeComponent } from './ui/home/home.component';
 import { LeftMenuComponent } from './ui/left-menu/left-menu.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
+import { HashService } from './services/hash-service';
+import { BaseEncodingService } from './services/base-encoding-service';
+import { HashFormComponent } from './ui/hash-form/hash-form.component';
+import { RandomService } from './services/random-service';
 
 
 @NgModule({
@@ -22,7 +26,8 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     AppComponent,
     LeftMenuComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    HashFormComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +81,9 @@ import { DashboardComponent } from './ui/dashboard/dashboard.component';
     { provide: MAT_DATE_LOCALE, useValue: 'es' },
     LocalStorageService,
     MessageService,
+    HashService,
+    RandomService,
+    BaseEncodingService,
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
   ],

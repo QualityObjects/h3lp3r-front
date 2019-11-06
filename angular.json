@@ -83,7 +83,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "h3lp3r:build"
+            "browserTarget": "h3lp3r:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
