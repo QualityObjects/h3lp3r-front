@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.initialAction = 0; 
 
     this.menuActions = [
-      { icon: "home-alt", label: 'Home', link: ['/'], show: true },
+      { icon: "home", label: 'Home', link: ['/'], show: true },
       {
         label: 'Hashes', show: true, items: [
           { label: 'MD5', link: [`/hash/md5`], show: true },
