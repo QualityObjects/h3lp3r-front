@@ -1,0 +1,37 @@
+<div class="header">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="start center" color="primary">
+    <div fxFlex="100" fxLayoutAlign="start center" fxLayout="row">
+      <div fxFlex.lt-md="50px" fxFlex="280px" fxLayout="row" fxLayoutAlign="start center">
+        <button (click)="toggleShowLeftMenu( )" mat-icon-button>
+          <mat-icon fontSet="fa" fontIcon="fa-bars"></mat-icon>
+        </button>
+        <div class="horizontal-logo"></div>
+        <h1>H3lp3r</h1>
+      </div>
+      <div fxLayoutAlign="center center" class="first-item header-item" fxFlex="54px">
+        <button (click)="goToHome()" mat-icon-button>
+          <mat-icon fontSet="fa" fontIcon="fa-home"></mat-icon>
+        </button>
+      </div>
+      <div fxFlex> </div>
+      <a class="logo-qo-header" href="https://www.qualityobjects.com/" target="_blank">
+      </a>
+    </div>
+  </mat-toolbar>
+</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidemenu id="sidebar-panel" [mode]="menuMode" [opened]="!isMobile()" class="main-menu"
+    fixedInViewport="true" fixedTopGap="65">
+    <div fxLayout="column" fxLayoutAlign="start start" class="h-100">
+      <app-left-menu fxFlex [initialAction]="initialAction" [actions]="menuActions" [sidemenu]="sidemenu">
+      </app-left-menu>
+    </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content ngClass.lt-md="mobile">
+    <div class="section-block">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

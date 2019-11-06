@@ -25,7 +25,22 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "*.css",
+                "input": "node_modules/@fortawesome/fontawesome-free/css",
+                "output": "assets/css"
+              },
+              {
+                "glob": "*solid*.*o*",
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "assets/webfonts"
+              },
+              {
+                "glob": "*brand*.*o*",
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "assets/webfonts"
+              }  
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -128,5 +143,5 @@
       }
     }
   },
-  "defaultProject": "h3lp3r"
+  "defaultProject": "h3lp3r-front"
 }

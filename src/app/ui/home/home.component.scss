@@ -1,0 +1,110 @@
+// https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html
+
+$header-height: 65px;
+$content-max-height: calc(100vh - 65px);
+
+$icon-header-width: 54px;
+$left-menu-width: 280px;
+
+$toolbar-icon-size: 26px;
+
+.mat-sidenav-content {
+    max-height: $content-max-height;
+}
+
+mat-sidenav.main-menu {
+    width: $left-menu-width;
+    max-width: $left-menu-width;
+    background-color: #f4f4f4;
+    top: $header-height;
+
+    &.mat-drawer-side {
+        border-right: none;
+    }
+}
+
+mat-sidenav-content {
+    padding: 1rem;
+
+}
+
+.header {
+    width: 100vw;
+    //  margin-bottom: -5px;
+}
+
+mat-toolbar {
+    &.mat-toolbar-single-row {
+        padding-right: 0px;
+    }
+
+    .mat-icon-button {
+        overflow: hidden;
+
+        mat-icon {
+            width: $toolbar-icon-size;
+            height: $toolbar-icon-size;
+            line-height: $toolbar-icon-size;
+            font-size: $toolbar-icon-size;
+        }
+    }
+
+    >div {
+        min-height: 100%;
+    }
+
+    .header-item {
+        //border-right:1px solid #f4f4f4;
+        min-height: 100%;
+        min-width: $icon-header-width;
+    }
+
+    .search-item {
+        padding-left: 10px;
+        padding-right: 5px;
+
+        input {
+            border: none;
+            font-size: 1rem;
+            font-weight: 400;
+            //min-height: 30px;
+        }
+    }
+
+    .user-fullname {
+        font-size: 0.9rem;
+    }
+
+    .horizontal-logo {
+        background-image: url(/assets/images/app_logo_white.svg);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 70px;
+        height: 42px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+}
+
+a.logo-qo-header {
+    background-image: url(/assets/images/qo_white.svg);
+   background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+   display: block;
+   width: 150px;
+   height: 50px;
+   margin-right: 20px;
+}
+
+button[mat-icon-button].with-badge {
+    overflow: visible;
+}
+
+
