@@ -1,6 +1,6 @@
-// TODO: FIX this importing from custom theme
+@import 'h3lp3r-theme.scss';
 
-$primary_color: blue;
+$primary_color: mat-color($h3lp3r-app-primary);
 
 $menu-item-height: 36px;
 $active-menu-border-width: 4px;
