@@ -7,7 +7,9 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 
 const PATH = `${environment.url_base}/hash`;
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class HashService {
 
     constructor(private http: HttpClient) {

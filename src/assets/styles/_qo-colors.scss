@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 $mat-qo-color: (
     50 : #ffebec,
     100 : #ffcecf,
@@ -29,3 +31,5 @@ $mat-qo-color: (
         A400 : #000000,
         A700 : #000000,
 ));
+
+$h3lp3r-app-primary: mat-palette($mat-qo-color);

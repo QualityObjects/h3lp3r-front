@@ -7,7 +7,9 @@ import { MessageService } from './msgs';
 import { ErrorInfo } from '../domain/responses';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RequestInterceptor implements HttpInterceptor {
 
   constructor() { }

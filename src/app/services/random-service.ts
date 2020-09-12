@@ -7,7 +7,9 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 
 const PATH = `${environment.url_base}/random`;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RandomService {
 
   constructor(private http: HttpClient) {
