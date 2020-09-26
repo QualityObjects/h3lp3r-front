@@ -46,8 +46,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           let msg;
           if (response.error && response.error.error_msg) {
             let err_data: ErrorInfo = response.error;
-            if (err_data.error_msg) {
-              msg = err_data.error_msg;
+            if (err_data.errorMsg) {
+              msg = err_data.errorMsg;
             }
           } else if (response.status === 401 /*Unauthenticated*/) {
             msg = 'Access denied';

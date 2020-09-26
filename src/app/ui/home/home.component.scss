@@ -23,9 +23,8 @@ mat-sidenav.main-menu {
     }
 }
 
-mat-sidenav-content {
-    padding: 1rem;
-
+mat-sidenav-content > div {
+    padding: 0.5rem;
 }
 
 .header {

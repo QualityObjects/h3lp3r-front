@@ -42,9 +42,9 @@
             <div class="result-data">
                 <mat-list dense>
                     <mat-list-item *ngFor="let name of result">
-                        <mat-icon color="primary" *ngIf="name.gender == 'F'" matListIcon fontSet="fa" fontIcon="fa-female"></mat-icon>
-                        <mat-icon *ngIf="name.gender == 'M'" matListIcon fontSet="fa" fontIcon="fa-male"></mat-icon>
-                        <h3 matLine> {{name.first_name}} {{name.last_name}} </h3>
+                        <mat-icon color="primary" *ngIf="name.gender == 'FEMALE'" matListIcon fontSet="fa" fontIcon="fa-female"></mat-icon>
+                        <mat-icon *ngIf="name.gender == 'MALE'" matListIcon fontSet="fa" fontIcon="fa-male"></mat-icon>
+                        <h3 matLine> {{name.firstName}} {{name.lastName}} </h3>
                     </mat-list-item>
                   </mat-list>
             </div>    

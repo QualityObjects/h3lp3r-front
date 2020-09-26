@@ -1,7 +1,7 @@
 
 export enum Gender {
-    FEMALE = 'F',
-    MALE = 'M'
+    FEMALE = 'FEMALE',
+    MALE = 'MALE'
 }
 
 export enum Lang {
@@ -10,9 +10,9 @@ export enum Lang {
 }
 
 export class RandomName {
-    public first_name: string;
-      public last_name: string;
-      public last_name2?: string;
+    public firstName: string;
+      public lastName: string;
+      public lastName2?: string;
       
       
       public gender? : Gender;

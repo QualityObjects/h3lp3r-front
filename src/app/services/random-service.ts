@@ -29,8 +29,8 @@ export class RandomService {
     let params = new HttpParams();
     params = params.append("total", `${total}`);
 
-    (lang !== undefined) && (params = params.append("lang", lang));
-    (gender !== undefined) && (params = params.append("gender", lang));
+    (lang != null) && (params = params.append("lang", lang));
+    (gender != null) && (params = params.append("gender", gender));
 
     return this.http.get<OpResponse>(`${PATH}/names`, { params: params });
   }
