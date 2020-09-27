@@ -40,10 +40,13 @@
                 "glob": "*brand*.*o*",
                 "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
                 "output": "assets/webfonts"
-              }  
+              }
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/assets/styles", "node_modules/@angular/material"]
+              "includePaths": [
+                "src/assets/styles",
+                "node_modules/@angular/material"
+              ]
             },
             "styles": [
               "src/assets/styles/h3lp3r-theme.scss",
@@ -147,5 +150,8 @@
       }
     }
   },
-  "defaultProject": "h3lp3r-front"
+  "defaultProject": "h3lp3r-front",
+  "cli": {
+    "analytics": false
+  }
 }

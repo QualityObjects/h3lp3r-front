@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 let URL_ICON_TPL = 'https://www.gravatar.com/avatar/${hash}?d=${iconType}';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class MessageService {
 
     constructor(

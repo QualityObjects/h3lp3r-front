@@ -1,0 +1,33 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - prepare
+  - build_push
+
+vars:
+  only:
+    - master
+  stage: prepare
+  script:
+    - VERSION=$(docker run --rm -v $(pwd)/package.json:/package.json node:slim node -p -e "require('/package.json').version")
+    - echo VERSION=$VERSION > vars.env
+  artifacts:
+    reports:
+      dotenv: vars.env
+
+build-docker-image:
+  stage: build_push
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY --
+    - "echo Image to build and push: ${CI_REGISTRY_IMAGE}:${VERSION}"
+  script:
+    - docker build -t qualityobjects/h3lp3r-front:$VERSION -t qualityobjects/h3lp3r-front:latest .
+    - docker push "$CI_REGISTRY_IMAGE:latest"
+    - docker push "$CI_REGISTRY_IMAGE:$VERSION"
+  only:
+    - master
+  dependencies: 
+    - vars

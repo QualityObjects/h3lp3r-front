@@ -19,9 +19,9 @@ export class OpResponse {
 }
 
 export class ErrorInfo {
-    error_code: number;
-    error_msg: string;
-    error_data?: { [key: string]: any };
+    errorCode: number;
+    errorMsg: string;
+    errorData?: { [key: string]: any };
 }
 
 export class ErrorResponse {

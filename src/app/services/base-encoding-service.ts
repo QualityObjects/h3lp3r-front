@@ -7,7 +7,9 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 
 const PATH = `${environment.url_base}/base`;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BaseEncodingService {
 
   constructor(private http: HttpClient) {
