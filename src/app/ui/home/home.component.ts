@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { RootService } from 'src/app/services/root-service';
 import { environment } from 'src/environments/environment';
 import { MenuAction } from '../left-menu/left-menu.component';
 
@@ -23,10 +24,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   public initialAction: number;
   public avatar: string;
 
+  public remoteIp: Observable<string> = this.rootService.remoteIp();
   @ViewChild(MatSidenav, { static: true })
   public sidemenu: MatSidenav;
 
   constructor(private router: Router,
+    private rootService: RootService,
     public dialog: MatDialog) {
   }
 

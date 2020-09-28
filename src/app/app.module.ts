@@ -15,6 +15,7 @@ import { HomeComponent } from './ui/home/home.component';
 import { LeftMenuComponent } from './ui/left-menu/left-menu.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { HashService } from './services/hash-service';
+import { RootService } from './services/root-service';
 import { BaseEncodingService } from './services/base-encoding-service';
 import { HashFormComponent } from './ui/hash-form/hash-form.component';
 import { RandomService } from './services/random-service';
@@ -51,6 +52,7 @@ import { H3lp3rMaterialModule } from './h3lp3r-material.module';
     LocalStorageService,
     MessageService,
     HashService,
+    RootService,
     RandomService,
     BaseEncodingService,
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },

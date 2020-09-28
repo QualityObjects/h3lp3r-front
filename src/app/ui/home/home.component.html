@@ -22,9 +22,12 @@
 <mat-sidenav-container>
   <mat-sidenav #sidemenu id="sidebar-panel" [mode]="menuMode" [opened]="!isMobile()" class="main-menu"
     fixedInViewport="true" fixedTopGap="65">
-    <div fxLayout="column" fxLayoutAlign="start start" class="h-100">
+    <div fxLayout="column" fxLayoutAlign="space-between start" class="left-side">
       <app-left-menu fxFlex [initialAction]="initialAction" [actions]="menuActions" [sidemenu]="sidemenu">
       </app-left-menu>
+      <div class="footer">
+        <span>Your IP: {{remoteIp | async }}</span>
+      </div>
     </div>
 
   </mat-sidenav>
