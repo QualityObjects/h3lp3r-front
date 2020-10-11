@@ -1,0 +1,46 @@
+<form [formGroup]="form" (ngSubmit)="send()">
+
+    <mat-card class="input-card">
+        <mat-card-header>
+          <mat-card-title>{{title}}</mat-card-title>
+          <mat-card-subtitle>Ask to the oracle your question</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="form-inputs w-100" fxLayout="column">
+              <div fxLayout="row wrap" fxLayoutGap="10px">
+                <mat-form-field fxFlex>
+                    <input matInput placeholder="Question (optional)" formControlName="question">
+                </mat-form-field>
+            </div>    
+            <div fxLayout="row wrap" fxLayoutGap="10px">
+              <mat-radio-group aria-label="Question type" formControlName="type" fxLayoutGap="20px">
+                <mat-radio-button value="YES_NO">Yes / No</mat-radio-button>
+                <mat-radio-button value="YES_NO_MAYBE">Yes / No / Maybe</mat-radio-button>
+              </mat-radio-group>
+            </div>    
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button type="submit" color="primary" [disabled]="!form.valid">
+            <mat-icon fontSet="fa" fontIcon="fa-play"></mat-icon>  
+            ASK</button>
+            <button mat-button type="reset">
+                <mat-icon fontSet="fa" fontIcon="fa-eraser"></mat-icon>  
+                CLEAR</button>
+        </mat-card-actions>
+      </mat-card>
+      
+
+      <mat-card class="result-card" *ngIf="!!result">
+        <mat-card-header>
+          <mat-card-title>Oracle's answer:</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="result-data">
+              {{result}}
+          </div>    
+        </mat-card-content>
+      </mat-card>
+            
+
+</form>

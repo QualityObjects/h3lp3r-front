@@ -21,6 +21,9 @@ mat-sidenav.main-menu {
     &.mat-drawer-side {
         border-right: none;
     }
+    ::ng-deep .mat-drawer-inner-container {
+        overflow-x: hidden;
+    }
 }
 
 mat-sidenav-content > div {

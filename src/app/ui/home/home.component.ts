@@ -76,6 +76,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         ],
       },
       {
+        label: 'Oracle', show: true, items: [
+          { label: 'Ask to the oracle', link: [`/oracle`], show: true },
+        ]
+      },
+      {
         label: 'Random', show: true, items: [
           { label: 'Integer', link: [`/random/int`], show: true },
           { label: 'Decimal', link: [`/random/decimal`], show: true },

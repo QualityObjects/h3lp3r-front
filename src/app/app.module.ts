@@ -23,6 +23,7 @@ import { BaseEncodingFormComponent } from './ui/base-encoding-form/base-encoding
 import { RandomNumberFormComponent } from './ui/random-number-form/random-number-form.component';
 import { RandomNamesFormComponent } from './ui/random-names-form/random-names-form.component';
 import { H3lp3rMaterialModule } from './h3lp3r-material.module';
+import { OracleQuestionFormComponent } from '@appui/oracle-question-form/oracle-question-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { H3lp3rMaterialModule } from './h3lp3r-material.module';
     HashFormComponent,
     BaseEncodingFormComponent,
     RandomNumberFormComponent,
-    RandomNamesFormComponent
+    RandomNamesFormComponent,
+    OracleQuestionFormComponent
   ],
   imports: [
     BrowserModule,

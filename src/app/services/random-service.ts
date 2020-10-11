@@ -35,4 +35,13 @@ export class RandomService {
     return this.http.get<OpResponse>(`${PATH}/names`, { params: params });
   }
 
+  public askOracle(questionType: 'YES_NO' | 'YES_NO_MAYBE', question?: string): Observable<OpResponse> {
+    let params = new HttpParams();
+    params = params.append("type", questionType);
+
+    (!!question) && (params = params.append("question", question));
+
+    return this.http.get<OpResponse>(`${PATH}/oracle`, { params: params });
+  }
+
 }

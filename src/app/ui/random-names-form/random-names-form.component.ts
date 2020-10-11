@@ -20,7 +20,7 @@ export class RandomNamesFormComponent {
     lang: [null, ],
   });
 
-  public title: string;
+  public title: string = "Random names generator";
   public result: RandomName[];
 
   constructor(
