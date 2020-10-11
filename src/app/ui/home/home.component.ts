@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
@@ -42,12 +42,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
+  @HostListener('window:resize', [])
+  onResize() {
+    this.menuMode = (this.isMobile()) ? 'over' : 'side';
+  }
 
   goToHome() {
     this.router.navigateByUrl("/");
   }
 
   toggleShowLeftMenu() {
+    
     this.sidemenu.toggle();
   }
 
