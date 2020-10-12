@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { OpResponse } from '../domain/responses';
 import { Observable } from 'rxjs';
 import { HttpParams, HttpClient } from '@angular/common/http';
+import { take } from 'rxjs/operators';
 
 
 const PATH = `${environment.url_base}/hash`;
@@ -22,7 +23,7 @@ export class HashService {
                 text: source_text
             }
         });
-        return this.http.get<OpResponse>(`${PATH}/${algorithm}`, { params: params });
+        return this.http.get<OpResponse>(`${PATH}/${algorithm}`, { params: params }).pipe(take(1));;
     }
 
 }

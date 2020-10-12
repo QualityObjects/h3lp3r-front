@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { OpResponse } from '../domain/responses';
 import { Observable } from 'rxjs';
 import { HttpParams, HttpClient } from '@angular/common/http';
+import { take } from 'rxjs/operators';
 
 
 const PATH = `${environment.url_base}/random`;
@@ -21,7 +22,7 @@ export class RandomService {
     (min !== undefined) && (params = params.append("min", `${min}`));
     (max !== undefined) && (params = params.append("max", `${max}`));
 
-    return this.http.get<OpResponse>(`${PATH}/number/${num_type}`, { params: params });
+    return this.http.get<OpResponse>(`${PATH}/number/${num_type}`, { params: params }).pipe(take(1));;
   }
 
 
@@ -32,7 +33,7 @@ export class RandomService {
     (lang != null) && (params = params.append("lang", lang));
     (gender != null) && (params = params.append("gender", gender));
 
-    return this.http.get<OpResponse>(`${PATH}/names`, { params: params });
+    return this.http.get<OpResponse>(`${PATH}/names`, { params: params }).pipe(take(1));;
   }
 
   public askOracle(questionType: 'YES_NO' | 'YES_NO_MAYBE', question?: string): Observable<OpResponse> {
@@ -41,7 +42,7 @@ export class RandomService {
 
     (!!question) && (params = params.append("question", question));
 
-    return this.http.get<OpResponse>(`${PATH}/oracle`, { params: params });
+    return this.http.get<OpResponse>(`${PATH}/oracle`, { params: params }).pipe(take(1));;
   }
 
 }

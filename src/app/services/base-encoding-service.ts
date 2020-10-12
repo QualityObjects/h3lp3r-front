@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { OpResponse } from '../domain/responses';
 import { Observable } from 'rxjs';
 import { HttpParams, HttpClient } from '@angular/common/http';
+import { take } from 'rxjs/operators';
 
 
 const PATH = `${environment.url_base}/base`;
@@ -21,7 +22,7 @@ export class BaseEncodingService {
         text: source_text
       }
     });
-    return this.http.get<OpResponse>(`${PATH}/64/${action}`, { params: params });
+    return this.http.get<OpResponse>(`${PATH}/64/${action}`, { params: params }).pipe(take(1));;
   }
 
 }
