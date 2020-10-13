@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.statsService.getStats(this.since, this.interval).subscribe(data => {
       this.operationData = data;
       this.operationSinceChart.data.datasets[0].data = this.operationData.timeline.filter(tl => !!tl.count).map(tl => {
-        const dt = DateTime.fromISO(`${tl.initRange}`).toLocal();
+        const dt = DateTime.fromISO(`${tl.initRange}`, {zone: 'UTC'}).toLocal();
         return {
           x: dt.toISO(),
           y: tl.count
