@@ -1,33 +1,63 @@
-image: docker:latest
+variables:
+  GENERATED_FRONT_FILE: h3lp3r-front.tgz
+
+cache:
+  paths:
+    - node_modules/
 
 services:
-  - docker:dind
-
+    - docker:dind 
+  
 stages:
   - prepare
-  - build_push
+  - build
+  - build_docker
 
-vars:
-  only:
-    - master
+# prepare: Optiene la versión del proeycto a partir del package.json o a partir del pom.xml
+prepare_job:
+  #only:
+  #  - master
   stage: prepare
+  image: node:slim
   script:
-    - VERSION=$(docker run --rm -v $(pwd)/package.json:/package.json node:slim node -p -e "require('/package.json').version")
+    - VERSION=$(node -p -e "require('./package.json').version")
     - echo VERSION=$VERSION > vars.env
   artifacts:
     reports:
       dotenv: vars.env
+    expire_in: 1 day  
 
-build-docker-image:
-  stage: build_push
+# build: Compila y crea el artefacto o artefactos del proyecto
+build_job:
+  #only:
+  #  - master
+  stage: build
+  image: node:slim
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm i --no-color && npx ng build --prod
+    - cd dist/h3lp3r-front && tar cvfz "${GENERATED_FRONT_FILE}" *
+  artifacts:
+    paths:
+      - ${GENERATED_FRONT_FILE}
+    expire_in: 1 day   
+  dependencies: 
+    - prepare_job
+
+# build_docker: Crea la imagen docker y la sube al registro, en este caso al DockerHUB
+build_docker_job:
+  #only:
+  #  - master
+  stage: build_docker
+  image: docker:latest
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY --
     - "echo Image to build and push: ${CI_REGISTRY_IMAGE}:${VERSION}"
   script:
-    - docker build -t qualityobjects/h3lp3r-front:$VERSION -t qualityobjects/h3lp3r-front:latest .
+    - docker build --build-arg "GENERATED_FRONT_FILE=${GENERATED_FRONT_FILE}" -t qualityobjects/h3lp3r-back:$VERSION -t qualityobjects/h3lp3r-back:latest .
     - docker push "$CI_REGISTRY_IMAGE:latest"
     - docker push "$CI_REGISTRY_IMAGE:$VERSION"
-  only:
-    - master
   dependencies: 
-    - vars
+    - build_job
