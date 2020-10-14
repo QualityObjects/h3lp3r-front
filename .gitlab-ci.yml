@@ -1,10 +1,6 @@
 variables:
   GENERATED_FRONT_FILE: h3lp3r-front.tgz
 
-cache:
-  paths:
-    - node_modules/
-
 services:
     - docker:dind 
   
@@ -56,7 +52,7 @@ build_docker_job:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY --
     - "echo Image to build and push: ${CI_REGISTRY_IMAGE}:${VERSION}"
   script:
-    - docker build --build-arg "GENERATED_FRONT_FILE=${GENERATED_FRONT_FILE}" -t qualityobjects/h3lp3r-back:$VERSION -t qualityobjects/h3lp3r-back:latest .
+    - docker build --build-arg "GENERATED_FRONT_FILE=${GENERATED_FRONT_FILE}" -t qualityobjects/h3lp3r-front:$VERSION -t qualityobjects/h3lp3r-front:latest .
     - docker push "$CI_REGISTRY_IMAGE:latest"
     - docker push "$CI_REGISTRY_IMAGE:$VERSION"
   dependencies: 
