@@ -60,4 +60,5 @@ build_docker_job:
     - docker push "$CI_REGISTRY_IMAGE:latest"
     - docker push "$CI_REGISTRY_IMAGE:$VERSION"
   dependencies: 
+    - prepare_job
     - build_job
