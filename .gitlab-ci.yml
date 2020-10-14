@@ -38,7 +38,7 @@ build_job:
       - node_modules/
   script:
     - npm i --no-color && npx ng build --prod
-    - cd dist/h3lp3r-front && tar cvfz "${GENERATED_FRONT_FILE}" *
+    - cd dist/h3lp3r-front && tar cvfz "../../${GENERATED_FRONT_FILE}" *
   artifacts:
     paths:
       - ${GENERATED_FRONT_FILE}
