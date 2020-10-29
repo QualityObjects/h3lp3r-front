@@ -64,5 +64,39 @@ $mat-qo-color-blue: (
         A700 : #000000,
 ));
 
+
+$mat-qo-color-green: (
+    50 : #e8f6ea,
+    100 : #c5e9ca,
+    200 : #9fdaa6,
+    300 : #79cb82,
+    400 : #5cc068,
+    500 : #3fb54d,
+    600 : #39ae46,
+    700 : #31a53d,
+    800 : #299d34,
+    900 : #1b8d25,
+    A100 : #c6ffca,
+    A200 : #93ff9b,
+    A400 : #60ff6b,
+    A700 : #47ff54,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
 //$h3lp3r-app-primary: mat-palette($mat-qo-color-blue);
 $h3lp3r-app-primary: mat-palette($mat-qo-color);
