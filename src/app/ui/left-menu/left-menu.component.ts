@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
 
 export class MenuAction {
   icon?: string;
-  label: string;
+  label?: string;
   link?: string[];
   show: boolean = true;
   items?: MenuAction[];
+
+  constructor(data: Partial<MenuAction>) {
+    Object.assign(this, data);
+  }
 }
 
 @Component({
@@ -31,11 +35,11 @@ export class MenuAction {
   ]  
 })
 export class LeftMenuComponent implements OnInit {
-  public currentMenu : string = undefined;  // para saber qué página se está mostrando
+  public currentMenu? : string | null = null;  // para saber qué página se está mostrando
   public collapsedMenus : any = {}; //menú seleccionado
-  @Input('initialAction') public initialAction : number;
-  @Input('actions') public actions : MenuAction[];
-  @Input('sidemenu') public sidemenu : MatSidenav;
+  @Input('initialAction') public initialAction? : number;
+  @Input('actions') public actions? : MenuAction[];
+  @Input('sidemenu') public sidemenu? : MatSidenav;
 
 
   constructor(private location: Location, 
@@ -47,12 +51,12 @@ export class LeftMenuComponent implements OnInit {
   
   ngOnInit() {
     this.initSelectedMenuActionFromUrl();
-    if (this.currentMenu == null && this.initialAction != null) {
-      this.currentMenu = this.actions[this.initialAction].link[0];
+    if (this.actions && this.currentMenu == null && this.initialAction != null) {
+      this.currentMenu = this.actions[this.initialAction]?.link![0];
     }
   }
   
-  private findActionByUrl(path: string, actions: MenuAction[]) : MenuAction {
+  private findActionByUrl(path: string, actions: MenuAction[]) : MenuAction | null {
     for(let action of actions) {
       if (action.link && action.link[0] === path) {
         return action;
@@ -67,15 +71,15 @@ export class LeftMenuComponent implements OnInit {
 
   private initSelectedMenuActionFromUrl() {
     let current = location.pathname;
-    let action = this.findActionByUrl(current, this.actions);
+    let action = this.findActionByUrl(current, this.actions!);
     if (!!action) {
-      this.currentMenu = action.link[0];
+      this.currentMenu = action.link && action.link[0];
     }
   }
     
   closeIfMobile() : void {
     if (this.isMobile()) {
-      this.sidemenu.close();
+      this.sidemenu!.close();
     }
   }
 
@@ -88,7 +92,7 @@ export class LeftMenuComponent implements OnInit {
     this.closeIfMobile();
   }
  
-  toggleMenu(menuIndex) {
+  toggleMenu(menuIndex: number) {
     this.collapsedMenus[menuIndex] = !this.collapsedMenus[menuIndex];
   }
 

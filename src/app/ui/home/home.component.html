@@ -1,3 +1,4 @@
+<div fxLayout="column" class="main-container">
 <div class="header">
   <mat-toolbar fxLayout="row" fxLayoutAlign="start center" color="primary">
     <div fxFlex="100" fxLayoutAlign="start center" fxLayout="row">
@@ -19,7 +20,7 @@
     </div>
   </mat-toolbar>
 </div>
-<mat-sidenav-container>
+<mat-sidenav-container fxFlex>
   <mat-sidenav #sidemenu id="sidebar-panel" [mode]="menuMode" [opened]="!isMobile()" class="main-menu"
     fixedInViewport="true" fixedTopGap="65">
     <div fxLayout="column" fxLayoutAlign="space-between start" class="left-side">
@@ -38,3 +39,4 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

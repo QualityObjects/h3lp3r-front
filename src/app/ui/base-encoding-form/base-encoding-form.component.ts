@@ -17,9 +17,9 @@ export class BaseEncodingFormComponent {
     text: ['', Validators.compose([Validators.required, Validators.maxLength(1500)])],
   });
 
-  public title: string;
-  public action: 'encode' | 'decode';
-  public result: string;
+  public title?: string;
+  public action?: 'encode' | 'decode';
+  public result?: string;
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +35,7 @@ export class BaseEncodingFormComponent {
     this.route.params.subscribe(params => {
       this.action = params['action'];
       this.result = '';
-      this.title = this.generateTitle(this.action, 'Base64');
+      this.title = this.generateTitle(this.action!, 'Base64');
     });
   }
 
@@ -47,7 +47,7 @@ export class BaseEncodingFormComponent {
 
   public send() {
     if (this.form.valid) {
-      this.baseEncService.base64(this.action, this.form.get('text').value)
+      this.baseEncService.base64(this.action!, this.form.get('text')!.value)
           .subscribe((resp: OpResponse) => {
             this.result = resp.result;
           });

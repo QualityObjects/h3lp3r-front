@@ -16,8 +16,8 @@ export class HashFormComponent {
     text: ['', Validators.compose([Validators.required, Validators.maxLength(500)])],
   });
 
-  public algorithm: string;
-  public result: string;
+  public algorithm?: string;
+  public result?: string;
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +38,7 @@ export class HashFormComponent {
 
   public send() {
     if (this.form.valid) {
-      this.hashService.hash(this.algorithm, this.form.get('text').value)
+      this.hashService.hash(this.algorithm!, this.form.get('text')!.value)
           .subscribe((resp: OpResponse) => {
             this.result = resp.result;
           });

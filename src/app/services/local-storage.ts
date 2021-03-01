@@ -31,8 +31,11 @@ export class LocalStorageService {
     }
 
     set(key: string, value: any) : void {
-        let jsonVal = value != null ? JSON.stringify(value) : null;
-        this.storage.setItem(key, jsonVal);
+        if (value == null) {
+            this.remove(key);
+        } else {
+            this.storage.setItem(key, JSON.stringify(value));
+        }
         this.cache[key] = value;
     }
 
@@ -50,7 +53,7 @@ export class LocalStorageService {
         let keys : string[] = [];
         let i = 0;
         while (this.storage.key(i) != null) {
-            keys.push(this.storage.key(i));
+            keys.push(this.storage.key(i)!);
             i++;
         }
 

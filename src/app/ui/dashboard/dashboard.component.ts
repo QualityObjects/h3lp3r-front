@@ -13,24 +13,24 @@ import { Chart } from 'chart.js';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   welcomeMessage: string = '';
-  operationData: OperationsByDateRange;
+  operationData?: OperationsByDateRange;
   since: string = DateTime.local().minus({ days: 1 }).toISO();
   interval: string = "10m";
-  chartIntervalId: number;
-  operationSinceChart: Chart;
+  chartIntervalId?: number;
+  operationSinceChart?: Chart; 
   constructor(
     private statsService: StatsService,
-    @Inject(DOCUMENT) private document
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnDestroy(): void {
-    clearInterval(this.chartIntervalId);
+    window.clearInterval(this.chartIntervalId);
   }
-
+ 
   ngOnInit() {
     this.createChartOperationsSince();
     this.refreshOperationSince();
-    this.chartIntervalId = setInterval(() => {
+    this.chartIntervalId = window.setInterval(() => {
       this.refreshOperationSince();
     }, 10000);
   }
@@ -40,13 +40,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log(`Since: ${this.since}`);
     this.statsService.getStats(this.since, this.interval).subscribe(data => {
       this.operationData = data;
-      this.operationSinceChart.data.datasets[0].data = this.operationData.timeline.filter(tl => !!tl.count).map(tl => {
+      this.operationSinceChart!.data.datasets![0].data = this.operationData.timeline.filter(tl => !!tl.count).map(tl => {
+        const dt = DateTime.fromISO(`${tl.initRange}`, {zone: 'UTC'}).toLocal();
         return {
-          x: tl.initRange,
+          x: dt.toISO(),
           y: tl.count
         }
       });
-      this.operationSinceChart.update();
+      this.operationSinceChart?.update();
     });
   }
 
@@ -72,7 +73,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         tooltips: {
           enabled: true,
           callbacks: {
-            title: (p) => {
+            title: (p: any) => {
               const dt = DateTime.fromISO(`${p[0].xLabel}`);
               return `${dt.toFormat('HH:mm')} - ${dt.plus({minutes: 10}).toFormat('HH:mm')}`;
             }

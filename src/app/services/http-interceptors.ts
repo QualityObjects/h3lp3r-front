@@ -43,7 +43,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       tap(
         (event: HttpEvent<any>) => event,
         (response: HttpErrorResponse) => {
-          let msg;
+          let msg = 'Server cannot be accessed';
           if (response.error && response.error.error_msg) {
             let err_data: ErrorInfo = response.error;
             if (err_data.errorMsg) {
@@ -55,8 +55,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             if (response.status == 200 || (response.status >= 400 && response.status <= 500)) {
               msg = `Unexpecting error accessing server [HTTP: ${response.status}]`;
               console.error(response.error);
-            } else {              
-              msg = 'Server cannot be accessed';
             }
           }
           this.msgs.showErrorMsg(msg);

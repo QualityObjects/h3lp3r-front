@@ -21,7 +21,7 @@ export class RandomNamesFormComponent {
   });
 
   public title: string = "Random names generator";
-  public result: RandomName[];
+  public result: RandomName[] | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +40,7 @@ export class RandomNamesFormComponent {
 
   public send() {
     if (this.form.valid) {
-      this.randomService.names(this.form.get('total').value, this.form.get('lang').value)
+      this.randomService.names(this.form.get('total')?.value, this.form.get('lang')?.value)
           .subscribe((resp: OpResponse) => {
             this.result = resp.result;
           });

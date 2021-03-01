@@ -1,13 +1,13 @@
 export class OperationsByDateRange {
 
-    since: string;
-    interval: string;
+    since!: string;
+    interval!: string;
 
-    timeline: OpsInRange[];
+    timeline!: OpsInRange[];
 
-    operations: {[key: string]: number};
+    operations!: {[key: string]: number};
 
-    count: number;
+    count!: number;
 
     constructor(fields: Partial<OperationsByDateRange> = {}) {
         Object.assign(this, fields);
@@ -16,10 +16,10 @@ export class OperationsByDateRange {
 }
 
 export class OpsInRange {
-    initRange: string;
-    count: number;
-    avgDuration: number;
-    countByOperation: {[key: string]: number};
+    initRange!: string;
+    count!: number;
+    avgDuration!: number;
+    countByOperation!: {[key: string]: number};
 
     constructor(fields: Partial<OpsInRange> = {}) {
         Object.assign(this, fields);
