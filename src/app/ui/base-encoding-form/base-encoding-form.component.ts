@@ -18,7 +18,7 @@ export class BaseEncodingFormComponent {
   });
 
   public title?: string;
-  public action?: 'encode' | 'decode';
+  public action: 'encode' | 'decode' = 'encode';
   public result?: string;
 
   constructor(

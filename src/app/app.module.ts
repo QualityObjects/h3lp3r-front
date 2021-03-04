@@ -24,6 +24,7 @@ import { RandomNumberFormComponent } from './ui/random-number-form/random-number
 import { RandomNamesFormComponent } from './ui/random-names-form/random-names-form.component';
 import { H3lp3rMaterialModule } from './h3lp3r-material.module';
 import { OracleQuestionFormComponent } from '@appui/oracle-question-form/oracle-question-form.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { OracleQuestionFormComponent } from '@appui/oracle-question-form/oracle-
     OracleQuestionFormComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

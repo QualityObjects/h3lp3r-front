@@ -16,7 +16,7 @@ export class HashFormComponent {
     text: ['', Validators.compose([Validators.required, Validators.maxLength(500)])],
   });
 
-  public algorithm?: string;
+  public algorithm: string = '';
   public result?: string;
 
   constructor(
