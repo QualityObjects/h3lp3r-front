@@ -1,7 +1,7 @@
 
 export class OpInput {
     public action?: string;
-    public params: {[key: string]: string};
+    public params!: {[key: string]: string};
 
     constructor(fields: Partial<OpResponse> = {}) {
         Object.assign(this, fields);
@@ -19,16 +19,16 @@ export class OpResponse {
 }
 
 export class ErrorInfo {
-    errorCode: number;
-    errorMsg: string;
+    errorCode!: number;
+    errorMsg!: string;
     errorData?: { [key: string]: any };
 }
 
 export class ErrorResponse {
-    error: ErrorInfo;
+    error!: ErrorInfo;
 }
 
 
 export class BasicResponse {
-    success: boolean;
+    success!: boolean;
 }

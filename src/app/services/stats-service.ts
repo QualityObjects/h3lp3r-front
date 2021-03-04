@@ -24,8 +24,8 @@ export class StatsService {
     public getStats(since? : string, interval?: string): Observable<OperationsByDateRange> {
         let params = new HttpParams({
             fromObject: {
-                since: since,
-                interval: interval
+                since: since || '',
+                interval: interval || ''
             }
         });
         return this.http.get<OperationsByDateRange>(`${PATH}/since_date`, { params: params }).pipe(take(1));

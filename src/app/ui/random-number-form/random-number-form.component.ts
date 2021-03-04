@@ -19,9 +19,9 @@ export class RandomNumberFormComponent {
     max: ['', Validators.min(0)],
   });
 
-  public title: string;
-  public numType: 'int' | 'decimal';
-  public result: number = null;
+  public title?: string;
+  public numType: 'int' | 'decimal' = 'int';
+  public result: number | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -48,7 +48,7 @@ export class RandomNumberFormComponent {
 
   public send() {
     if (this.form.valid) {
-      this.randomService.number(this.numType, this.form.get('min').value, this.form.get('max').value)
+      this.randomService.number(this.numType, this.form.get('min')?.value, this.form.get('max')?.value)
           .subscribe((resp: OpResponse) => {
             this.result = resp.result;
           });

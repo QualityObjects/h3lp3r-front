@@ -14,19 +14,20 @@ import { MenuAction } from '../left-menu/left-menu.component';
   styleUrls: ['home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public userFullName: string;
-  public userId: number;
+  public userFullName?: string;
+  public userId?: number;
   public showSettings: boolean = false; //para mostrar la rueda del menú plataforma
   public env: any = environment;
-  public isAuthenticatedSubscription: Subscription;
-  public menuActions: MenuAction[] = []; º
+  public isAuthenticatedSubscription?: Subscription;
+  public menuActions: MenuAction[] = [];
   public menuMode: 'side' | 'over' | 'push' = 'side';
-  public initialAction: number;
-  public avatar: string;
+  public initialAction?: number;
+  public avatar?: string;
 
   public remoteIp: Observable<string> = this.rootService.remoteIp();
+
   @ViewChild(MatSidenav, { static: true })
-  public sidemenu: MatSidenav;
+  public sidemenu?: MatSidenav;
 
   constructor(private router: Router,
     private rootService: RootService,
@@ -53,7 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   toggleShowLeftMenu() {
     
-    this.sidemenu.toggle();
+    this.sidemenu?.toggle();
   }
 
   isMobile() {

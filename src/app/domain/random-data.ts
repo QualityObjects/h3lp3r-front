@@ -10,12 +10,12 @@ export enum Lang {
 }
 
 export class RandomName {
-    public firstName: string;
-      public lastName: string;
-      public lastName2?: string;
-      
-      
-      public gender? : Gender;
-      public lang? : Lang;
-  }
+    public firstName: string = '';
+    public lastName: string = '';
+    public lastName2?: string;
+    
+    
+    public gender? : Gender;
+    public lang? : Lang;
+}
   

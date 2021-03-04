@@ -19,7 +19,7 @@ export class OracleQuestionFormComponent {
   });
 
   public title: string = "The oracle answers";
-  public result: RandomName[];
+  public result: RandomName[] | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -38,8 +38,8 @@ export class OracleQuestionFormComponent {
 
   public send() {
     if (this.form.valid) {
-      const questionType = this.form.get('type').value || 'YES_NO';
-      const question = this.form.get('question').value;
+      const questionType = this.form.get('type')?.value || 'YES_NO';
+      const question = this.form.get('question')?.value;
       this.randomService.askOracle(questionType, question)
           .subscribe((resp: OpResponse) => {
             this.result = resp.result;

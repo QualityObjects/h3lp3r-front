@@ -3,11 +3,16 @@
     .container {
         padding: 10px;
         width: calc(100% - 20px);
-        height: calc(100vh - 150px);
+        height: 100%;
         background-color: white;
         background-image: url(/assets/images/qo_watermark.svg);
         background-attachment: fixed;
         background-position: center center;
         background-repeat: no-repeat;
     }
+}
+
+.chart-container {
+    width: 70%;
+    height: 70%;
 }

@@ -8,9 +8,15 @@ $left-menu-width: 280px;
 
 $toolbar-icon-size: 26px;
 
+.main-container {
+    height: 100%;
+}
+
 .mat-sidenav-content {
     max-height: $content-max-height;
+    height: 100%;
 }
+
 
 mat-sidenav.main-menu {
     width: $left-menu-width;
