@@ -14,7 +14,7 @@ prepare_job:
   #only:
   #  - master
   stage: prepare
-  image: node:slim
+  image: node:12-slim
   script:
     - VERSION=$(node -p -e "require('./package.json').version")
     - echo VERSION=$VERSION > vars.env
