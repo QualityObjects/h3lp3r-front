@@ -1,4 +1,4 @@
-def gitCredentialsId = 'GitLab-qualityobjects'
+def gitCredentialsId = 'github-qoadmin'
 def dockerCredentialsId = 'docker-registry.qodev.es'
 def npmrcCredentialsId = '.npmrc'
 
@@ -21,7 +21,7 @@ pipeline {
         DOCKER_IMAGE_URL = "h3lp3r/${PROJECT_NAME}"
     }
     parameters {
-        string(name: 'REPO_URL', defaultValue: 'git@gitlab.com:qo-oss/h3lp3r/h3lp3r-front.git', description: 'URL del repositorio')
+        string(name: 'REPO_URL', defaultValue: 'git@github.com:QualityObjects/h3lp3r-front.git', description: 'URL del repositorio')
         string(name: 'BUILD_BRANCH', defaultValue: 'dev', description: 'Rama a construir')
         booleanParam(name: 'BUILD_FRONT', defaultValue: true, description: 'Construye el front')
         choice(name: 'FRONT_TESTS', choices: ['only_unit', 'unit_and_sonar', 'unit_and_sonar_strict_tests', 'no_tests'], description: 'Tests a ejecutar')
